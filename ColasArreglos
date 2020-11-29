@@ -1,0 +1,61 @@
+package Unidad3;
+
+import java.util.Scanner;
+
+public class ColaArreglos {
+    public void Eliminar(int[] numeros, int y)
+    {
+        numeros[y]=0;
+        y++;
+    }
+
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        int opcion, cont = 1, y=1;
+        boolean continuar = true;
+        int[] numeros = new int[100];
+        ColaArreglos cola= new ColaArreglos();
+
+        while (continuar) {
+            System.out.println("Este es el menú \n1.Inserta \n2.Eliminar \n3.Mostrar \n4.Salir");
+            System.out.println("Elige una opcion");
+            opcion = leer.nextInt();
+            System.out.println("--------------");
+            // COLA: PRIMERO QUE ENTTRA PRIMERO QUE SALE
+            switch (opcion) {
+                case 1:
+                    for (int i = 1; i <= 10; i++) {
+                        int valorE = (int) (Math.random() * (500 - 50) + 50);
+                        numeros[cont] = valorE;
+                        System.out.println(cont + ". " + numeros[cont]);
+                        cont++;
+                    }
+                    System.out.println("--------------");
+                    break;
+                case 2:
+                    cola.Eliminar(numeros, y);
+                    y++;
+                    System.out.println("--------------");
+                    break;
+                case 3:
+                    
+                    for (int i=1; i<=numeros.length-1; i++) {
+                        if(numeros[i]==0){
+                            System.out.print("");
+
+                        }else{
+                            System.out.println(i+". "+numeros[i]);
+
+                        }
+                    }
+                    System.out.println("--------------");
+                    break;
+                case 4:
+                    continuar = false;
+                    break;
+                default: System.out.println("Valor invalido");
+                    break;
+            }
+        }
+    }
+}
